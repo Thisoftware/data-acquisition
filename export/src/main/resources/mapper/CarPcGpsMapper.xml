@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxx.dao.CarPcGpsMapper">
+  <resultMap id="BaseResultMap" type="com.xxx.model.CarPcGps">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="serial_num" jdbcType="VARCHAR" property="serialNum" />
+    <result column="bearing" jdbcType="VARCHAR" property="bearing" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="altitude" jdbcType="DOUBLE" property="altitude" />
+    <result column="accuracy" jdbcType="VARCHAR" property="accuracy" />
+    <result column="provider" jdbcType="VARCHAR" property="provider" />
+    <result column="site_name" jdbcType="VARCHAR" property="siteName" />
+    <result column="speed" jdbcType="DOUBLE" property="speed" />
+    <result column="collection_time" jdbcType="TIMESTAMP" property="collectionTime" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="delete_flag" jdbcType="BIT" property="deleteFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, serial_num, bearing, latitude, longitude, altitude, accuracy, provider, site_name, 
+    speed, collection_time, type, create_time, delete_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_car_pc_gps
+    where serial_num = #{serialNum,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from t_car_pc_gps
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xxx.model.CarPcGps">
+    insert into t_car_pc_gps (id, serial_num, bearing, 
+      latitude, longitude, altitude, 
+      accuracy, provider, site_name, 
+      speed, collection_time, type, 
+      create_time, delete_flag)
+    values (#{id,jdbcType=INTEGER}, #{serialNum,jdbcType=VARCHAR}, #{bearing,jdbcType=VARCHAR}, 
+      #{latitude,jdbcType=DOUBLE}, #{longitude,jdbcType=DOUBLE}, #{altitude,jdbcType=DOUBLE}, 
+      #{accuracy,jdbcType=VARCHAR}, #{provider,jdbcType=VARCHAR}, #{siteName,jdbcType=VARCHAR}, 
+      #{speed,jdbcType=DOUBLE}, #{collectionTime,jdbcType=TIMESTAMP}, #{type,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{deleteFlag,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xxx.model.CarPcGps">
+    insert into t_car_pc_gps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serialNum != null">
+        serial_num,
+      </if>
+      <if test="bearing != null">
+        bearing,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="altitude != null">
+        altitude,
+      </if>
+      <if test="accuracy != null">
+        accuracy,
+      </if>
+      <if test="provider != null">
+        provider,
+      </if>
+      <if test="siteName != null">
+        site_name,
+      </if>
+      <if test="speed != null">
+        speed,
+      </if>
+      <if test="collectionTime != null">
+        collection_time,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="serialNum != null">
+        #{serialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bearing != null">
+        #{bearing,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="altitude != null">
+        #{altitude,jdbcType=DOUBLE},
+      </if>
+      <if test="accuracy != null">
+        #{accuracy,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null">
+        #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="siteName != null">
+        #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="speed != null">
+        #{speed,jdbcType=DOUBLE},
+      </if>
+      <if test="collectionTime != null">
+        #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxx.model.CarPcGps">
+    update t_car_pc_gps
+    <set>
+      <if test="serialNum != null">
+        serial_num = #{serialNum,jdbcType=VARCHAR},
+      </if>
+      <if test="bearing != null">
+        bearing = #{bearing,jdbcType=VARCHAR},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="altitude != null">
+        altitude = #{altitude,jdbcType=DOUBLE},
+      </if>
+      <if test="accuracy != null">
+        accuracy = #{accuracy,jdbcType=VARCHAR},
+      </if>
+      <if test="provider != null">
+        provider = #{provider,jdbcType=VARCHAR},
+      </if>
+      <if test="siteName != null">
+        site_name = #{siteName,jdbcType=VARCHAR},
+      </if>
+      <if test="speed != null">
+        speed = #{speed,jdbcType=DOUBLE},
+      </if>
+      <if test="collectionTime != null">
+        collection_time = #{collectionTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxx.model.CarPcGps">
+    update t_car_pc_gps
+    set serial_num = #{serialNum,jdbcType=VARCHAR},
+      bearing = #{bearing,jdbcType=VARCHAR},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      altitude = #{altitude,jdbcType=DOUBLE},
+      accuracy = #{accuracy,jdbcType=VARCHAR},
+      provider = #{provider,jdbcType=VARCHAR},
+      site_name = #{siteName,jdbcType=VARCHAR},
+      speed = #{speed,jdbcType=DOUBLE},
+      collection_time = #{collectionTime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      delete_flag = #{deleteFlag,jdbcType=BIT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
